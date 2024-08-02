@@ -27,5 +27,30 @@ public class ThreeSum {
         return ls;
     }
 
+    public static void main(String[] args) {
+     int[] nums = new int[]{1 ,2 ,4 ,5, 3, -1, 8 ,7};
+     int target = 6; int len = nums.length;
+     Set<List<Integer>> st = new HashSet<>();
+
+     Arrays.sort(nums);
+
+     for(int i=0; i <= len-2; i++){
+         int left = i+1;
+         int right = len-1;
+
+         while(left < right) {
+             int sum = nums[i] + nums[left] + nums[right];
+             if (sum == target) {
+                 st.add(Arrays.asList(nums[i], nums[left++], nums[right++]));
+             } else {
+                 if (sum < target) left++;
+                 else right--;
+             }
+         }
+     }
+
+     st.forEach(System.out::println);
+
+    }
 
 }
